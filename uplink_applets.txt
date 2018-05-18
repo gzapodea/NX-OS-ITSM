@@ -1,0 +1,10 @@
+event manager applet uplink_failure
+ event syslog pattern "%ETHPORT-5-IF_DOWN_CFG_CHANGE: Interface Ethernet1/1 is down"
+ action 10 cli enable
+ action 11 cli run guestshell sudo chvrf management python /bootflash/NX-OS-Demo/uplink_failure.py
+!
+event manager applet uplink_recovery
+ event syslog pattern "%ETHPORT-5-IF_ADMIN_UP: Interface Ethernet1/1 is admin up"
+ action 10 cli enable
+ action 11 cli run guestshell sudo chvrf management python /bootflash/NX-OS-Demo/uplink_recovery.py
+!
